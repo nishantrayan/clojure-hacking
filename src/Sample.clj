@@ -73,3 +73,8 @@
 (def lt100 (range-checker 0 100))
 (fn-wrapper "10 is less than 100" (lt100 10))
 (fn-wrapper "101 is not less than 100" (not (lt100 101)))
+
+;pi multiplicatio using currying
+(def times-pi (partial * 3.14))
+(fn-wrapper "2 times pi is" (times-pi 2))
+(fn-wrapper "3 times pi is" (times-pi 3))
