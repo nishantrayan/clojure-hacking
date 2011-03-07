@@ -30,13 +30,13 @@
         [number guess-square-root]
         (< (abs (- (* guess-square-root guess-square-root) number)) 0.001))
     (defn sqrt
-        "finds the square root of a number"
-        ([x] (sqrt x 1.0))
-        ([x guess]
+        "finds the square root of a number using loop symbol"
+        [x]
+        (loop [guess 1.0]
             (if (good-enough? x guess)
                     guess
-                        (sqrt x (avg guess (/ x guess))))))
-    (println (sqrt 11))
+                        (recur (avg guess (/ x guess))))))
+    (println (str "square root of 12 is " (sqrt 12)))
 
 ;add up numbers
 (defn add-numbers
