@@ -57,3 +57,19 @@
     (list (fun arg1 arg2) (fun arg2 arg1)))
 (println (str "Calling / with 2 arguments and switching them" (arg-switch / 2 3)))
 (println (str "Calling str with 2 arguments and switching them" (arg-switch str " Hello " " nishant ")))
+
+;function creating other function
+(defn range-checker
+    "returns a function which can be passed a number to check if it lies in a certain range"
+    [min max]
+    (fn [x]
+        (and (> x min)
+                (< x max))))
+(defn fn-wrapper
+    "prints a comment string along with the result of evaluating a function"
+    [comment fn-val]
+    (do (println (str comment ":" fn-val))
+        fn-val))
+(def lt100 (range-checker 0 100))
+(fn-wrapper "10 is less than 100" (lt100 10))
+(fn-wrapper "101 is not less than 100" (not (lt100 101)))
