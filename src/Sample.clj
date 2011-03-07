@@ -37,3 +37,14 @@
                     guess
                         (sqrt x (avg guess (/ x guess))))))
     (println (sqrt 11))
+
+;add up numbers
+(defn add-numbers
+    "adds the sequence of number below a certain limit"
+    ([limit] (add-numbers limit 0 0))
+    ([limit current sum]
+        (if (> current limit)
+                sum
+                    (add-numbers limit (inc current) (+ sum current)))))
+(println (str "Sum of numbers <= 3 is" (add-numbers 3)))
+(println (str "sum of numbers <= 10 is" (add-numbers 10)))
