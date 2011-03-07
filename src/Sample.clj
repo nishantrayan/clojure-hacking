@@ -45,6 +45,7 @@
     ([limit current sum]
         (if (> current limit)
                 sum
-                    (add-numbers limit (inc current) (+ sum current)))))
+                    (recur limit (inc current) (+ sum current)))))
 (println (str "Sum of numbers <= 3 is" (add-numbers 3)))
 (println (str "sum of numbers <= 10 is" (add-numbers 10)))
+(println (str "sum of numbers <= 10000 is " (add-numbers 10000)))
