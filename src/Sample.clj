@@ -74,7 +74,17 @@
 (fn-wrapper "10 is less than 100" (lt100 10))
 (fn-wrapper "101 is not less than 100" (not (lt100 101)))
 
-;pi multiplicatio using currying
+;pi multiplication using currying
 (def times-pi (partial * 3.14))
 (fn-wrapper "2 times pi is" (times-pi 2))
 (fn-wrapper "3 times pi is" (times-pi 3))
+
+;struct-map example
+(defstruct person :first-name :last-name)
+(def girl (struct-map person :first-name "maitreyee" :last-name "korgaonkar"))
+(def boy (struct-map person :first-name "nishant" :last-name "rayan"))
+(def get-first-name (accessor person :first-name))
+(def get-last-name (accessor person :last-name))
+(fn-wrapper "Boy's last name is" (boy :last-name))
+(fn-wrapper "Boy's last name is" (get-last-name boy))
+(fn-wrapper "Girl's first name is" (get-first-name girl))
