@@ -88,3 +88,21 @@
 (fn-wrapper "Boy's last name is" (boy :last-name))
 (fn-wrapper "Boy's last name is" (get-last-name boy))
 (fn-wrapper "Girl's first name is" (get-first-name girl))
+
+;trying to use map functions
+(assert (= 1 ({:x 1 :y 2} :x)))
+(assert (= 3
+            ((conj {:x 1 :y 2} {:z 3}) :z)))
+(assert (= "nishant"
+            ((assoc {:last-name "rayan"} :first-name "nishant") :first-name)))
+(assert (nil? ({:last-name "rayan"} :first-name)))
+(assert (nil?
+            ((dissoc {:last-name "rayan" :first-name "nishant"} :first-name) :first-name)))
+(let [my-name (merge-with str {:first-name "nishant" :name "nishant "} {:last-name "rayan" :name "rayan"})]
+        (assert (= "nishant" (my-name :first-name)))
+        (assert (= "rayan" (my-name :last-name)))
+        (assert (= "nishant rayan" (my-name :name)))
+        (assert (= #{:first-name :last-name :name} (set (keys my-name))))
+        (assert (= #{"nishant" "nishant rayan" "rayan"} (set (vals my-name))))
+        my-name)
+(assert (contains? {:a 1 :b 2} :a))
