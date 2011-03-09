@@ -106,3 +106,18 @@
         (assert (= #{"nishant" "nishant rayan" "rayan"} (set (vals my-name))))
         my-name)
 (assert (contains? {:a 1 :b 2} :a))
+
+;demo of first and rest functions
+(defn just-loop-and-print
+    "prints all the elements of a sequence"
+    [s]
+        (if (not (empty? s))
+            (do (println (str "item:" (first s)))
+             (recur (rest s)))))
+
+(do
+    (println "on vector")
+        (just-loop-and-print [1 2 3])
+    (println "on list")
+        (just-loop-and-print '(4 5 6)))
+
