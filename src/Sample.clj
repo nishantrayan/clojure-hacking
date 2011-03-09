@@ -130,3 +130,17 @@
                     (recur (cons n acc) (dec n)))))
 (fn-wrapper "Sequence from 1 to 10" (make-int-seq 10))
 (fn-wrapper "Sequence from 1 to 3" (make-int-seq 3))
+
+;being lazy helps
+(defn square-me
+    "square the parameter and returns the result"
+    [n]
+    (do
+        (println (str "squaring:" n))
+        (* n n)))
+;this statement doesn't print anything
+(def i-am-lazy (map square-me '(1 2 3 4)))
+;following prints 3 lines
+(nth i-am-lazy 2)
+;follwing prints 1 line and the entire sequence in second lie
+(println i-am-lazy)
