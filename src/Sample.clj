@@ -121,3 +121,12 @@
     (println "on list")
         (just-loop-and-print '(4 5 6)))
 
+(defn make-int-seq
+    "constructs a sequence of numbers from 1 to parameter"
+    [max]
+    (loop [acc nil n max]
+        (if (zero? n)
+                acc
+                    (recur (cons n acc) (dec n)))))
+(fn-wrapper "Sequence from 1 to 10" (make-int-seq 10))
+(fn-wrapper "Sequence from 1 to 3" (make-int-seq 3))
