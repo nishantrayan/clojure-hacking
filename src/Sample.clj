@@ -144,3 +144,14 @@
 (nth i-am-lazy 2)
 ;follwing prints 1 line and the entire sequence in second lie
 (println i-am-lazy)
+
+;account transfer using clojure ref and transaction
+(defn transfer-money
+    "transfers amount of money from account1 to account2"
+    [account1 account2 amount]
+    (dosync (alter account1 - amount)
+            (alter account2 + amount)))
+(def account1 (ref 150))
+(def account2 (ref 250))
+(transfer-money account2 account1 50)
+(assert (= @account1 @account2))
